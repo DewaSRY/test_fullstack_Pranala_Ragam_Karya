@@ -24,10 +24,11 @@ type Service interface {
 	// Close terminates the database connection.
 	// It returns an error if the connection cannot be closed.
 	Close() error
+	GetInstance() *gorm.DB
 }
 
 type service struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 var (
@@ -69,10 +70,14 @@ func New() Service {
 	}
 
 	dbInstance = &service{
-		db: gorm_db,
+		DB: gorm_db,
 	}
 
 	return dbInstance
+}
+
+func (s *service) GetInstance() *gorm.DB {
+	return s.DB
 }
 
 // Health checks the health of the database connection by pinging the database.
