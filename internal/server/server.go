@@ -20,10 +20,13 @@ type Server struct {
 
 func NewServer() *http.Server {
 	port, _ := strconv.Atoi(os.Getenv("PORT"))
+
+	db_instance := database.New()
+
 	NewServer := &Server{
 		port: port,
 
-		db: database.New(),
+		db:db_instance,
 	}
 
 	// Declare Server config
@@ -35,5 +38,7 @@ func NewServer() *http.Server {
 		WriteTimeout: 30 * time.Second,
 	}
 
+
+	fmt.Printf("application running on port %d", port)
 	return server
 }

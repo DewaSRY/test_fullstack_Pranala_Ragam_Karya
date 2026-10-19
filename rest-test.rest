@@ -1,0 +1,8 @@
+
+### hello word request
+GET http://localhost:8080/ HTTP/1.1
+
+### health request
+GET http://localhost:8080/health HTTP/1.1
+
+

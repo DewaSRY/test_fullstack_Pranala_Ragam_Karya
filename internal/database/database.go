@@ -51,6 +51,7 @@ func New() Service {
 	dbInstance = &service{
 		db: db,
 	}
+	
 	return dbInstance
 }
 

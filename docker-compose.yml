@@ -1,15 +1,15 @@
 services:
   psql_bp:
-    image: postgres:latest
+    image: postgres:16
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${BLUEPRINT_DB_DATABASE}
-      POSTGRES_USER: ${BLUEPRINT_DB_USERNAME}
-      POSTGRES_PASSWORD: ${BLUEPRINT_DB_PASSWORD}
+      POSTGRES_DB: product_db
+      POSTGRES_USER: product_user
+      POSTGRES_PASSWORD: product_password
     ports:
-      - "${BLUEPRINT_DB_PORT}:5432"
+      - "5442:5432"
     volumes:
-      - psql_volume_bp:/var/lib/postgresql/data
+      - be_test_volume_bp:/var/lib/postgresql/data
 
 volumes:
-  psql_volume_bp:
+  be_test_volume_bp:
