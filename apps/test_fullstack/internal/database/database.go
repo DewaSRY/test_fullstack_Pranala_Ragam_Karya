@@ -69,6 +69,10 @@ func New() Service {
 		log.Panic("failed to connect to database")
 	}
 
+	if err := gorm_db.AutoMigrate(&ProductModel{}); err != nil {
+		panic(err.Error())
+	}
+
 	dbInstance = &service{
 		DB: gorm_db,
 	}

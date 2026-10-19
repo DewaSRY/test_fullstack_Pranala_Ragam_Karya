@@ -1,19 +1,52 @@
 
-### hello word request
+### Hello World
 GET http://localhost:8080/ HTTP/1.1
 
-### health request
+###
+
+### Health Check
 GET http://localhost:8080/health HTTP/1.1
 
+###
 
-
-### Create Product 
-
-POST  http://localhost:8080/product HTTP/1.1
+### Create Product
+POST http://localhost:8080/products HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "first product", 
-    "price" : 10.000,
-    "stoc" : 1000
+    "name": "first product",
+    "price": 10000,
+    "stock": 1000
 }
+
+###
+
+### Get All Products
+GET http://localhost:8080/products HTTP/1.1
+
+###
+
+### Get Product By ID
+GET http://localhost:8080/products/1 HTTP/1.1
+
+###
+
+### Update Product
+PUT http://localhost:8080/products/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "updated product",
+    "price": 15000,
+    "stock": 500
+}
+
+###
+
+### Delete Product
+DELETE http://localhost:8080/products/1 HTTP/1.1
+
+###
+
+### Verify Product Was Deleted
+GET http://localhost:8080/products/1 HTTP/1.1
